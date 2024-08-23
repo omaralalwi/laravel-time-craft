@@ -1,0 +1,76 @@
+{
+    "name": "omaralalwi/laravel-time-craft",
+    "description": "Laravel Time Craft is a powerful package for handling date and time scopes in your Laravel applications. It provides a set of convenient traits and helper functions to simplify date and time operations.",
+    "keywords": [
+        "omaralalwi",
+        "laravel-time-craft",
+        "laravel",
+        "scopes",
+        "filters",
+        "mutators",
+        "casting",
+        "queries",
+        "laravel queries",
+        "laravel scopes",
+        "laravel time scopes",
+        "laravel date scopes",
+        "common laravel scopes",
+        "datetime",
+        "eloquent",
+        "trait",
+        "carbon",
+        "query",
+        "date-scopes",
+        "laravel-package",
+        "orm"
+    ],
+    "homepage": "https://github.com/omaralalwi/laravel-time-craft",
+    "license": "MIT",
+    "type": "library",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "omar alalwi",
+            "email": "omaralwi2010@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.21.1",
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omaralalwi\\LaravelTimeCraft\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omaralalwi\\LaravelTimeCraft\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Omaralalwi\\LaravelTimeCraft\\LaravelTimeCraftServiceProvider"
+            ],
+            "aliases": {
+                "LaravelTimeCraft": "Omaralalwi\\LaravelTimeCraft\\LaravelTimeCraftFacade"
+            }
+        }
+    }
+}
