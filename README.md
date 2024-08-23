@@ -55,18 +55,18 @@ You can apply various scopes in your model queries. Below is a table with the de
 
 | Scope          | Description                                      | Usage Example                                                                      |
 |--------------------|--------------------------------------------------|------------------------------------------------------------------------------------|
-| `today`            | Filters records created today.                  | ``` $todayOrders = Order::today()->get(); ```                                      |
-| `yesterday`        | Filters records created yesterday.              | ``` $yesterdayOrders = Order::yesterday()->get(); ```                              |
-| `oneWeekAgo`       | Filters records created in the last seven days. | ``` $lastSevenDaysOrders = Order::oneWeekAgo()->get(); ```                         |
-| `lastWeek`         | Filters records created in the last week.       | ``` $lastWeekOrders = Order::lastWeek()->get(); ```                                |
-| `currentWeek`      | Filters records created in the current week.    | ``` $currentWeekOrders = Order::currentWeek()->get(); ```                          |
-| `oneMonthAgo`      | Filters records created in the last 30 days.    | ``` $ordersLast30Days = Order::oneMonthAgo()->get(); ```                           |
-| `lastMonth`        | Filters records created last month.             | ``` $lastMonthOrders = Order::lastMonth()->get(); ```                              |
-| `currentMonth`     | Filters records created in the current month.   | ``` $thisMonthOrders = Order::currentMonth()->get(); ```                           |
-| `lastYear`         | Filters records created in the last year.       | ``` $lastYearOrders = Order::lastYear()->get(); ```                                |
-| `oneYearAgo`       | Filters records created exactly one year ago.   | ``` $oneYearAgoOrders = Order::oneYearAgo()->get(); ```                            |
-| `currentYear`      | Filters records created in the current year.    | ``` $thisYearOrders = Order::currentYear()->get(); ```                             |
-| `betweenDates`     | Filters records within a specific date range.   | ``` $ordersBetweenDates = Order::betweenDates('2024-01-01', '2024-01-31')->get(); ```   |
+| `today`            | records created today.                  | ``` $todayOrders = Order::today()->get(); ```                                      |
+| `yesterday`        | records created yesterday.              | ``` $yesterdayOrders = Order::yesterday()->get(); ```                              |
+| `oneWeekAgo`       | records created in the last seven days. | ``` $lastSevenDaysOrders = Order::oneWeekAgo()->get(); ```                         |
+| `lastWeek`         | records created in the last week.       | ``` $lastWeekOrders = Order::lastWeek()->get(); ```                                |
+| `currentWeek`      | records created in the current week.    | ``` $currentWeekOrders = Order::currentWeek()->get(); ```                          |
+| `oneMonthAgo`      | records created in the last 30 days.    | ``` $ordersLast30Days = Order::oneMonthAgo()->get(); ```                           |
+| `lastMonth`        | records created last month.             | ``` $lastMonthOrders = Order::lastMonth()->get(); ```                              |
+| `currentMonth`     | records created in the current month.   | ``` $thisMonthOrders = Order::currentMonth()->get(); ```                           |
+| `lastYear`         | records created in the last year.       | ``` $lastYearOrders = Order::lastYear()->get(); ```                                |
+| `oneYearAgo`       | records created exactly one year ago.   | ``` $oneYearAgoOrders = Order::oneYearAgo()->get(); ```                            |
+| `currentYear`      | records created in the current year.    | ``` $thisYearOrders = Order::currentYear()->get(); ```                             |
+| `betweenDates`     | records within a specific date range.   | ``` $ordersBetweenDates = Order::betweenDates('2024-01-01', '2024-01-31')->get(); ```   |
 
 ---
 
@@ -134,7 +134,6 @@ You may be interested in our other packages:
 
 Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting a pull request.
 
----
 
 ## License
 
