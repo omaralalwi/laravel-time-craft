@@ -49,10 +49,6 @@ class Order extends Model
 }
 ```
 
-To merge the "Available Scopes" table with usage examples, you can integrate the description and parameters directly into the examples for better readability and clarity. Here's a streamlined approach that combines the table and usage examples:
-
----
-
 ### 2. Available Scopes
 
 You can apply various scopes in your model queries. Below is a table with the description and usage examples for each scope:
@@ -80,12 +76,12 @@ You can apply various scopes in your model queries. Below is a table with the de
 all scopes using `created_at` by default.
 You can override by three ways:-
 
-**in config file as default for all models**
+**3 .1 in config file as default for all models**
 ```php
 'default_field' => 'your_specific_field'
 ```
 
-**customize it for every model** : by adding following line in model class:
+**3.2 customize it for every model** : by adding following line in model class:
 
 ```php
 class Order extends Model
@@ -96,7 +92,7 @@ class Order extends Model
 }
 ```
 
-**or pass field name directly when using the scopes:**
+**3.3 pass field name directly when using the scopes:**
 ```php
 $lastWeekOrders = Order::lastWeek('updated_at')->get();
 ```
