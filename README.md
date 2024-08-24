@@ -216,7 +216,7 @@ You can use the provided helper functions in your application (in Blade files or
 
 You may be interested in our other packages:
 
-- **[Gpdf](https://github.com/omaralalwi/Gpdf)** : PDF converter for , support storing generated files to S3.
+- **[Gpdf](https://github.com/omaralalwi/Gpdf)** : PDF converter for php & Laravel apps, support storing PDF files to S3.
 - **[laravel-taxify](https://github.com/omaralalwi/laravel-taxify)** : simplify tax (VAT) calculations in laravel apps.
 - **[laravel-deployer](https://github.com/omaralalwi/laravel-deployer)** : Streamlined deployment for Laravel and Node.js apps.
 - **[laravel-trash-cleaner](https://github.com/omaralalwi/laravel-trash-cleaner)** : Cleans logs and debug files for logs and debugging packages.
