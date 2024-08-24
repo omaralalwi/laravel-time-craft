@@ -133,12 +133,12 @@ You can apply various scopes in your model queries. Below are the descriptions, 
 all scopes using `created_at` by default.
 You can override by three ways:-
 
-** in config file as default for all models**
+**in config file as default for all models**
 ```php
 'default_field' => 'your_specific_field'
 ```
 
-** customize it for every model** : by adding following line in model class:
+**customize it for every model** : by adding following line in model class:
 
 ```php
 class Order extends Model
@@ -149,7 +149,7 @@ class Order extends Model
 }
 ```
 
-** pass field name directly when using the scopes:**
+**pass field name directly when using the scopes:**
 ```php
 $lastWeekOrders = Order::lastWeek('updated_at')->get();
 ```
@@ -216,10 +216,10 @@ You can use the provided helper functions in your application (in Blade files or
 
 You may be interested in our other packages:
 
-- **[Gpdf](https://github.com/omaralalwi/Gpdf)** : PDF converter for PHP & Laravel Applications, with support for storing files on S3 and handling Arabic content.
-- **[laravel-taxify](https://github.com/omaralalwi/laravel-taxify)** : Provides a set of helper functions to simplify tax (VAT) calculations within Laravel applications.
-- **[laravel-deployer](https://github.com/omaralalwi/laravel-deployer)** : Streamlined deployment for Laravel and Node.js apps, featuring zero-downtime.
-- **[laravel-trash-cleaner](https://github.com/omaralalwi/laravel-trash-cleaner)** : Cleans logs and debug files for debugging packages like Clockwork & Telescope.
+- **[Gpdf](https://github.com/omaralalwi/Gpdf)** : PDF converter for , support storing generated files to S3.
+- **[laravel-taxify](https://github.com/omaralalwi/laravel-taxify)** : simplify tax (VAT) calculations in laravel apps.
+- **[laravel-deployer](https://github.com/omaralalwi/laravel-deployer)** : Streamlined deployment for Laravel and Node.js apps.
+- **[laravel-trash-cleaner](https://github.com/omaralalwi/laravel-trash-cleaner)** : Cleans logs and debug files for logs and debugging packages.
 
 ---
 
