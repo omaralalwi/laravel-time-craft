@@ -36,7 +36,7 @@ php artisan vendor:publish --tag=laravel-time-craft
 
 ## Usage
 
-### 1. Using the `HasDateTimeScopes` Trait
+### Using the `HasDateTimeScopes` Trait
 
 Add the `HasDateTimeScopes` trait to your Eloquent model:
 
@@ -49,39 +49,96 @@ class Order extends Model
 }
 ```
 
-### 2. Available Scopes
+#### Available Scopes in `HasDateTimeScopes` trait
 
-You can apply various scopes in your model queries. Below is a table with the description and usage examples for each scope:
+You can apply various scopes in your model queries. Below are the descriptions, usage examples, and corresponding outputs for each scope:
 
-| Scope          | Description                                      | Usage Example                                                                      |
-|--------------------|--------------------------------------------------|------------------------------------------------------------------------------------|
-| `today`            | records created today.                  | ``` $todayOrders = Order::today()->get(); ```                                      |
-| `yesterday`        | records created yesterday.              | ``` $yesterdayOrders = Order::yesterday()->get(); ```                              |
-| `oneWeekAgo`       | records created in the last seven days. | ``` $lastSevenDaysOrders = Order::oneWeekAgo()->get(); ```                         |
-| `lastWeek`         | records created in the last week.       | ``` $lastWeekOrders = Order::lastWeek()->get(); ```                                |
-| `currentWeek`      | records created in the current week.    | ``` $currentWeekOrders = Order::currentWeek()->get(); ```                          |
-| `oneMonthAgo`      | records created in the last 30 days.    | ``` $ordersLast30Days = Order::oneMonthAgo()->get(); ```                           |
-| `lastMonth`        | records created last month.             | ``` $lastMonthOrders = Order::lastMonth()->get(); ```                              |
-| `currentMonth`     | records created in the current month.   | ``` $thisMonthOrders = Order::currentMonth()->get(); ```                           |
-| `lastYear`         | records created in the last year.       | ``` $lastYearOrders = Order::lastYear()->get(); ```                                |
-| `oneYearAgo`       | records created exactly one year ago.   | ``` $oneYearAgoOrders = Order::oneYearAgo()->get(); ```                            |
-| `currentYear`      | records created in the current year.    | ``` $thisYearOrders = Order::currentYear()->get(); ```                             |
-| `betweenDates`     | records within a specific date range.   | ``` $ordersBetweenDates = Order::betweenDates('2024-01-01', '2024-01-31')->get(); ```   |
+
+- **`today`** : Filters records created today.
+
+  ```php
+  $todayOrders = Order::today()->get();
+  ```
+
+- **`yesterday`** : Filters records created yesterday.
+
+  ```php
+  $yesterdayOrders = Order::yesterday()->get();
+  ```
+
+- **`oneWeekAgo`** : Filters records created in the last seven days.
+
+  ```php
+  $lastSevenDaysOrders = Order::oneWeekAgo()->get();
+  ```
+
+- **`lastWeek`** : Filters records created in the last week.
+
+  ```php
+  $lastWeekOrders = Order::lastWeek()->get();
+  ```
+
+- **`currentWeek`** : Filters records created in the current week.
+
+  ```php
+  $currentWeekOrders = Order::currentWeek()->get();
+  ```
+
+- **`oneMonthAgo`** : Filters records created in the last 30 days.
+
+  ```php
+  $ordersLast30Days = Order::oneMonthAgo()->get();
+  ```
+
+- **`lastMonth`** : Filters records created last month.
+
+  ```php
+  $lastMonthOrders = Order::lastMonth()->get();
+  ```
+
+- **`currentMonth`** : Filters records created in the current month.
+
+  ```php
+  $thisMonthOrders = Order::currentMonth()->get();
+  ```
+
+- **`lastYear`** : Filters records created in the last year.
+
+  ```php
+  $lastYearOrders = Order::lastYear()->get();
+  ```
+
+- **`oneYearAgo`** : Filters records created exactly one year ago.
+
+  ```php
+  $oneYearAgoOrders = Order::oneYearAgo()->get();
+  ```
+
+- **`currentYear`** : Filters records created in the current year.
+
+  ```php
+  $thisYearOrders = Order::currentYear()->get();
+  ```
+
+- **`betweenDates`** : Filters records within a specific date range.
+
+  ```php
+  $ordersBetweenDates = Order::betweenDates('2024-01-01', '2024-01-31')->get();
+  ```
 
 ---
 
-
-### 3. Customize Scoping field
+###  Customize Scoping field
 
 all scopes using `created_at` by default.
 You can override by three ways:-
 
-**3 .1 in config file as default for all models**
+** in config file as default for all models**
 ```php
 'default_field' => 'your_specific_field'
 ```
 
-**3.2 customize it for every model** : by adding following line in model class:
+** customize it for every model** : by adding following line in model class:
 
 ```php
 class Order extends Model
@@ -92,41 +149,87 @@ class Order extends Model
 }
 ```
 
-**3.3 pass field name directly when using the scopes:**
+** pass field name directly when using the scopes:**
 ```php
 $lastWeekOrders = Order::lastWeek('updated_at')->get();
 ```
 
 ---
 
-### 4. Available Helper Functions
+### Format Date Time Using Helper Functions
 
-You can use the provided helper functions in your application (in blade files or in any class). Below is a table with the description, usage examples, and the corresponding output for each helper function:
+You can use the provided helper functions in your application (in Blade files or in any class). Below are the descriptions, usage examples, and corresponding outputs for each helper function:
 
-| helper Function    | Description                                       | Usage Example                                                      | Output                 |
-|--------------------|---------------------------------------------------|--------------------------------------------------------------------|-------------------------------|
-| `formatDate`       | Formats a given date to "Y-m-d" format.          | ```$formattedDate = formatDate($order->created_at);```             | `2024-08-25`                   |
-| `formatTime`       | Formats a given time to "h:i:s A" format.        | ```$formattedTime = formatTime($order->created_at);```             | `10:38:12 PM`                 |
-| `getHumanDateTime` | Formats the created_at date time to "Y-m-d H:i:s A" format. | ```$humanDateTime = getHumanDateTime($order->created_at);```       | `2017-02-15 10:38:12 PM`      |
-| `formatDateTime`   | Formats a given date and time to "Y-m-d H:i:s A" format. | ```$formattedDateTime = formatDateTime($order->created_at);```     | `2017-02-15 10:38:12 PM`      |
-| `formatTimeAgo`    | Gets a human-readable "time ago" format for a given date. | ```$timeAgo = formatTimeAgo($order->created_at);```                | `2 days ago`                   |
-| `startOfDay`       | Gets the start of the day for a given date.      | ```$startOfDay = startOfDay($order->created_at);```               | `2024-08-23 00:00:00`         |
-| `endOfDay`         | Gets the end of the day for a given date.        | ```$endOfDay = endOfDay($order->created_at);```                   | `2024-08-23 23:59:59`         |
-| `isWeekend`        | Checks if a given date is on the weekend.        | ```$isWeekend = isWeekend($order->created_at);```                 | `true` or `false`             |
-| `addDays`          | Adds a specified number of days to a given date. | ```$futureDate = addDays($order->created_at, 10);```               | `2024-09-02`                   |
-| `subtractDays`     | Subtracts a specified number of days from a given date. | ```$pastDate = subtractDays($order->created_at, 10);```            | `2024-08-13`                   |
+- **`formatDate`** : Formats a given date to "Y-m-d" format.
+  ```php
+  $formattedDate = formatDate($order->created_at); // 2024-08-25
+  ```
+
+- **`formatTime`** : Formats a given time to "h:i:s A" format.
+  ```php
+  $formattedTime = formatTime($order->created_at); // 10:38:12 PM
+  ```
+
+- **`getHumanDateTime`** : Formats the created_at datetime to "Y-m-d H:i:s A" format.
+  ```php
+  $humanDateTime = getHumanDateTime($order->created_at); // 2017-02-15 10:38:12 PM
+  ```
+
+- **`formatDateTime`** : Formats a given date and time to "Y-m-d H:i:s A" format.
+  ```php
+  $formattedDateTime = formatDateTime($order->created_at); // 2017-02-15 10:38:12 PM
+  ```
+
+- **`formatTimeAgo`** : Gets a human-readable "time ago" format for a given date.
+  ```php
+  $timeAgo = formatTimeAgo($order->created_at); // 2 days ago
+  ```
+
+- **`startOfDay`** : Gets the start of the day for a given date.
+  ```php
+  $startOfDay = startOfDay($order->created_at); // 2024-08-23 00:00:00
+  ```
+
+- **`endOfDay`** : Gets the end of the day for a given date.
+  ```php
+  $endOfDay = endOfDay($order->created_at); // 2024-08-23 23:59:59
+  ```
+
+- **`isWeekend`** : Checks if a given date is on the weekend.
+  ```php
+  $isWeekend = isWeekend($order->created_at); // true or false
+  ```
+
+- **`addDays`** : Adds a specified number of days to a given date.
+  ```php
+  $futureDate = addDays($order->created_at, 10); // 2024-09-02
+  ```
+
+- **`subtractDays`** : Subtracts a specified number of days from a given date.
+  ```php
+  $pastDate = subtractDays($order->created_at, 10); // 2024-08-13
+  ```
+
+---
+
+This format should be even more readable on the Packagist page.
+---
+
+This format should work well on Packagist and still provide clear information.
+---
+
+Here's a reformatted version of the "Helpful Packages" section:
 
 ---
 
 ## Helpful Packages
+
 You may be interested in our other packages:
 
-| Package                                                                     | Description                                                                                                                                           |                                              
-|---------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **[Gpdf](https://github.com/omaralalwi/Gpdf)**                                  | PDF converter for PHP & Laravel Applications, Support store to s3 & supports Arabic content out-of-the-box and other languages .                      |
-| **[laravel-taxify](https://github.com/omaralalwi/laravel-taxify)**              | Laravel Taxify provides a set of helper functions to simplify tax (VAT) calculations within Laravel applications, that support multiple tax profiles. |
-| **[laravel-deployer](https://github.com/omaralalwi/laravel-deployer)**          | Streamlined Deployment for Laravel and Node.js apps, with Zero-Downtime and various environments and branches,                                        |
-| **[laravel-trash-cleaner](https://github.com/omaralalwi/laravel-trash-cleaner)** | clean logs and debug files for debugging packages (clockwork, laravel telescope and more), and free up space                                          |
+- **[Gpdf](https://github.com/omaralalwi/Gpdf)** : PDF converter for PHP & Laravel Applications, with support for storing files on S3 and handling Arabic content.
+- **[laravel-taxify](https://github.com/omaralalwi/laravel-taxify)** : Provides a set of helper functions to simplify tax (VAT) calculations within Laravel applications.
+- **[laravel-deployer](https://github.com/omaralalwi/laravel-deployer)** : Streamlined deployment for Laravel and Node.js apps, featuring zero-downtime.
+- **[laravel-trash-cleaner](https://github.com/omaralalwi/laravel-trash-cleaner)** : Cleans logs and debug files for debugging packages like Clockwork & Telescope.
 
 ---
 
@@ -143,4 +246,3 @@ Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTIN
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
-
