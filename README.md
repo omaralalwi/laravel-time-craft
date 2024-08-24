@@ -212,12 +212,6 @@ You can use the provided helper functions in your application (in Blade files or
 
 ---
 
-This format should be even more readable on the Packagist page.
----
-
-This format should work well on Packagist and still provide clear information.
----
-
 Here's a reformatted version of the "Helpful Packages" section:
 
 ---
