@@ -212,10 +212,6 @@ You can use the provided helper functions in your application (in Blade files or
 
 ---
 
-Here's a reformatted version of the "Helpful Packages" section:
-
----
-
 ## Helpful Packages
 
 You may be interested in our other packages:
