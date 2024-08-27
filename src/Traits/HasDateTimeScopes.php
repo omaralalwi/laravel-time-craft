@@ -44,7 +44,7 @@ trait HasDateTimeScopes
      */
     public function scopeOneWeekAgo($query, $dateField = null): Builder
     {
-        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(7));
+        return $query->whereDate($this->getDateField($dateField), '=', now()->subDays(7));
     }
 
     /**
@@ -86,7 +86,7 @@ trait HasDateTimeScopes
      */
     public function scopeOneMonthAgo($query, $dateField = null): Builder
     {
-        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(30));
+        return $query->whereDate($this->getDateField($dateField), '=', now()->subDays(30));
     }
 
     /**
