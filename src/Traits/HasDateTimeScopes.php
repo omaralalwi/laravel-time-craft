@@ -78,6 +78,91 @@ trait HasDateTimeScopes
     }
 
     /**
+     * Scope a query to include records created in the last 7 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast7Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(7));
+    }
+
+    /**
+     * Scope a query to include records created in the last 10 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast10Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(10));
+    }
+
+    /**
+     * Scope a query to include records created in the last 14 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast14Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(14));
+    }
+
+    /**
+     * Scope a query to include records created in the last 15 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast15Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(15));
+    }
+
+    /**
+     * Scope a query to include records created in the last 21 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast21Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(21));
+    }
+
+    /**
+     * Scope a query to include records created in the last 30 days.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLast30Days($query, $dateField = null): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays(30));
+    }
+
+    /**
+     * Scope a query to include records created in the last number of days specified.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $dateField
+     * @param int $days The number of days to look back.
+     * @return \Illuminate\Database\Eloquent\Builder The query builder instance.
+     */
+    public function scopeLastDays($query, $dateField = null, $days = 7): Builder
+    {
+        return $query->whereDate($this->getDateField($dateField), '>=', now()->subDays($days));
+    }
+
+    /**
      * Scope a query to include records created in the last 30 days.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
