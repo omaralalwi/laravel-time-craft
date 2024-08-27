@@ -84,6 +84,51 @@ You can apply various scopes in your model queries. Below are the descriptions, 
   $currentWeekOrders = Order::currentWeek()->get();
   ```
 
+- **`last7Days`** : Filters records created in the last 7 days.
+
+  ```php
+  $last7DaysOrders = Order::last7Days()->get();
+  ```
+
+- **`last10Days`** : Filters records created in the last 10 days.
+
+  ```php
+  $last10DaysOrders = Order::last10Days()->get();
+  ```
+
+- **`last14Days`** : Filters records created in the last 14 days.
+
+  ```php
+  $last14DaysOrders = Order::last14Days()->get();
+  ```
+
+- **`last15Days`** : Filters records created in the last 15 days.
+
+  ```php
+  $last15DaysOrders = Order::last15Days()->get();
+  ```
+  
+- **`last21Days`** : Filters records created in the last 21 days.
+
+  ```php
+  $last21DaysOrders = Order::last21Days()->get();
+  ```
+
+- **`last30Days`** : Filters records created in the last 30 days.
+
+  ```php
+  $last30DaysOrders = Order::last30Days()->get();
+  ```
+
+- **`lastDays($days)`** : Filters records created in the last number of days specified.
+
+  ```php
+  // Filters records created in the last 5 days
+  $last5DaysOrders = Order::lastDays(null,5)->get(); // null mean take default field 'created_at' , or you can pass it 'created_at'
+  // Filters records created in the last 12 days
+  $last10DaysOrders = Order::lastDays(null,12)->get();
+  ```
+
 - **`oneMonthAgo`** : Filters records created in the last 30 days.
 
   ```php
