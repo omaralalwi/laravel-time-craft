@@ -46,7 +46,7 @@ if (! function_exists('getHumanDateTime')) {
     function getHumanDateTime($createdAt)
     {
         if ($createdAt instanceof Carbon) {
-            return $createdAt->format('Y-m-d H:i:s A');
+            return $createdAt->format('Y-m-d h:i:s A');
         }
 
         return $createdAt;
@@ -63,10 +63,10 @@ if (! function_exists('formatDateTime')) {
     function formatDateTime($dateTime)
     {
         if ($dateTime instanceof \DateTime) {
-            return $dateTime->format('Y-m-d H:i:s A');
+            return $dateTime->format('Y-m-d h:i:s A');
         }
 
-        return date('Y-m-d H:i:s A', strtotime($dateTime));
+        return date('Y-m-d h:i:s A', strtotime($dateTime));
     }
 }
 
