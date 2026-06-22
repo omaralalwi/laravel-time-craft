@@ -1,7 +1,24 @@
 # Changelog
 
-All notable changes to `laravel-time-craft` will be documented in this file
+All notable changes to `laravel-time-craft` will be documented in this file.
 
-## 1.0.0 - 201X-XX-XX
+This project adheres to [Semantic Versioning](https://semver.org/).
 
-- initial release
+## Unreleased
+
+- Added a PHPUnit/Testbench test suite covering all scopes and helper functions.
+- Fixed `formatDateTime()` and `getHumanDateTime()` to use the 12-hour format (`h`) so the `AM/PM` marker is correct (e.g. `10:38:12 PM` instead of `22:38:12 PM`).
+- Migrated `phpunit.xml` to the PHPUnit 10 schema and added a `.gitignore`.
+
+## 1.0.2 - 2024-08-27
+
+- Added `lastNDays` range scopes (`last7Days`, `last10Days`, `last14Days`, `last15Days`, `last21Days`, `last30Days`) and the configurable `lastDays($field, $days)` scope.
+
+## 1.0.1 - 2024-08-27
+
+- Fixed the `*Ago` scopes (`oneWeekAgo`, `oneMonthAgo`, `oneYearAgo`) to match an exact day in the past.
+- Fixed publishing of the configuration file.
+
+## 1.0.0 - 2024-08-24
+
+- Initial release.
