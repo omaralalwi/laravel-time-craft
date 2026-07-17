@@ -70,10 +70,7 @@
         "laravel": {
             "providers": [
                 "Omaralalwi\\LaravelTimeCraft\\LaravelTimeCraftServiceProvider"
-            ],
-            "aliases": {
-                "LaravelTimeCraft": "Omaralalwi\\LaravelTimeCraft\\LaravelTimeCraftFacade"
-            }
+            ]
         }
     }
 }

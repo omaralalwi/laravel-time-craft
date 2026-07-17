@@ -55,7 +55,7 @@ Install the package via Composer:
 composer require omaralalwi/laravel-time-craft
 ```
 
-The service provider and the `LaravelTimeCraft` facade are auto-discovered — no manual registration needed.
+The service provider is auto-discovered — no manual registration needed.
 
 (Optional) publish the configuration file:
 

@@ -183,8 +183,13 @@ trait HasDateTimeScopes
      */
     public function scopeLastMonth($query, $dateField = null): Builder
     {
-        return $query->whereMonth($this->getDateField(), now()->subMonth()->month)
-            ->whereYear($this->getDateField($dateField), now()->subMonth()->year);
+        $field = $this->getDateField($dateField);
+        // Anchor on the first of the month before subtracting so month-end
+        // dates (e.g. Mar 31) can't overflow into the wrong month.
+        $lastMonth = now()->startOfMonth()->subMonth();
+
+        return $query->whereMonth($field, $lastMonth->month)
+            ->whereYear($field, $lastMonth->year);
     }
 
     /**
@@ -196,7 +201,13 @@ trait HasDateTimeScopes
      */
     public function scopeCurrentMonth($query, $dateField = null): Builder
     {
-        return $query->whereMonth($this->getDateField($dateField), now()->month);
+        $field = $this->getDateField($dateField);
+        // Read the clock once so month and year can't straddle a year
+        // boundary (e.g. between the two calls at midnight on Jan 1).
+        $now = now();
+
+        return $query->whereMonth($field, $now->month)
+            ->whereYear($field, $now->year);
     }
 
     /**
