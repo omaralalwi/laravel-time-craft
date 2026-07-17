@@ -40,8 +40,10 @@ A simple trait and a set of helper functions that let you effortlessly manage da
 
 ## Requirements
 
-- PHP `>= 7.4`
-- Laravel (Eloquent / Carbon) — the scopes rely on Laravel's query builder and the `now()`/`today()` helpers.
+- PHP `^8.1` – `^8.4`
+- Laravel `10.x`, `11.x`, `12.x`, or `13.x` (Eloquent / Carbon) — the scopes rely on Laravel's query builder and the `now()`/`today()` helpers.
+
+> Each Laravel version keeps its own PHP floor: Laravel 10 needs PHP `^8.1`, Laravel 11/12 need `^8.2`, and Laravel 13 needs `^8.3`. Composer automatically installs the highest Laravel your PHP version supports.
 
 ## Installation
 
