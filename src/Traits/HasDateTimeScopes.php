@@ -202,9 +202,12 @@ trait HasDateTimeScopes
     public function scopeCurrentMonth($query, $dateField = null): Builder
     {
         $field = $this->getDateField($dateField);
+        // Read the clock once so month and year can't straddle a year
+        // boundary (e.g. between the two calls at midnight on Jan 1).
+        $now = now();
 
-        return $query->whereMonth($field, now()->month)
-            ->whereYear($field, now()->year);
+        return $query->whereMonth($field, $now->month)
+            ->whereYear($field, $now->year);
     }
 
     /**

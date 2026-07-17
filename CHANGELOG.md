@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## 2.0.0 - Unreleased
 
-- **Fixed** `currentMonth()` matching the target month in *every* year — it now also constrains the year.
+- **Fixed** `currentMonth()` matching the target month in *every* year — it now also constrains the year, and reads the clock once so its month and year can't straddle a New Year boundary.
 - **Fixed** `lastMonth()` ignoring a per-call `$dateField` in its month clause (it filtered the month on the default field and only the year on the requested field), and hardened it against month-end overflow (e.g. running on the 31st).
 - **Fixed** a dangling `LaravelTimeCraftFacade` alias in `composer.json` that pointed at a class the package never shipped; removed it (the helper functions remain globally available).
 - **Compatibility:** officially support Laravel 10, 11, 12 and 13. Declared explicit `illuminate/support` and `illuminate/database` (`^10.0|^11.0|^12.0|^13.0`) dependencies and raised the PHP floor to `^8.1` (was `>=7.4`). The dev matrix now spans `orchestra/testbench` `^8|^9|^10|^11` and PHPUnit `^10.5|^11.0|^12.0`. **Breaking:** dropping PHP 7.4 / Laravel < 10 is why this is a new major.
