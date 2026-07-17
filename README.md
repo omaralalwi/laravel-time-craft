@@ -25,6 +25,7 @@ A simple trait and a set of helper functions that let you effortlessly manage da
   - [Available Scopes](#available-scopes)
   - [Customizing the Date Field](#customizing-the-date-field)
   - [A Note on Timezones](#a-note-on-timezones)
+  - [The `HasReadableDates` Trait](#the-hasreadabledates-trait)
 - [Helper Functions](#helper-functions)
 - [Testing](#testing)
 - [Changelog](#changelog)
@@ -35,6 +36,7 @@ A simple trait and a set of helper functions that let you effortlessly manage da
 ## Features
 
 - **Flexible date scopes** — filter records by common time frames (today, yesterday, current week, last month, last N days, and more).
+- **Readable date accessors** — a drop-in trait that adds human-readable `readable_created_at` / `readable_updated_at` / `readable_deleted_at` accessors (and a generic `readableDate()` helper) to any model, without clobbering the real Carbon timestamps.
 - **Helper functions** — utilities for formatting dates, times, and human-readable "time ago" representations.
 - **Dynamic field support** — every scope can target any date/time column, configurable globally, per model, or per call.
 
@@ -69,6 +71,9 @@ Publishing creates `config/laravel-time-craft.php`:
 return [
     // The default column used by all scopes when no field is given.
     'default_field' => 'created_at',
+
+    // The format used by the HasReadableDates trait for the readable_* accessors.
+    'readable_datetime_format' => 'F j, Y g:i A',
 ];
 ```
 
@@ -186,6 +191,70 @@ $lastWeekOrders = Order::lastWeek('updated_at')->get();
 ### A Note on Timezones
 
 Scopes are built on Laravel's `now()` / `today()` helpers, so "today", "this week", etc. are evaluated against your application timezone (`config('app.timezone')`). Make sure your app timezone and the stored timestamps are consistent to get the results you expect.
+
+### The `HasReadableDates` Trait
+
+Tired of formatting `created_at` / `updated_at` / `deleted_at` in every model, controller, and Blade view? Add the trait once and get ready-to-display, human-readable date accessors:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Omaralalwi\LaravelTimeCraft\Traits\HasReadableDates;
+
+class Order extends Model
+{
+    use HasReadableDates;
+}
+```
+
+```php
+$order->readable_created_at;   // "April 30, 2023 3:49 PM"
+$order->readable_updated_at;   // "April 30, 2023 3:49 PM"
+$order->readable_deleted_at;   // "April 30, 2023 3:49 PM" (only when the model uses SoftDeletes)
+```
+
+> **Non-destructive by design:** unlike overriding the timestamp attributes directly, this trait adds **separate** `readable_*` accessors. Your real `$order->created_at` keeps returning a `Carbon` instance, so date math, sorting, comparisons and casting all keep working — you just get a formatted string on the side.
+
+**Format any date field.** Use `readableDate()` for columns beyond the standard timestamps:
+
+```php
+$order->readableDate('shipped_at');   // "April 30, 2023 3:49 PM"
+```
+
+**Include them in JSON / API responses** by appending the accessors:
+
+```php
+class Order extends Model
+{
+    use HasReadableDates;
+
+    protected $appends = ['readable_created_at'];
+}
+```
+
+**Safe on models without the columns.** `readable_deleted_at` returns `null` unless the model uses `SoftDeletes` (detected recursively, so it also works when `SoftDeletes` comes from a parent class), and the `readable_created_at` / `readable_updated_at` accessors return `null` when the model has `public $timestamps = false`.
+
+#### Customizing the format
+
+The format is resolved through a three-level fallback (first match wins):
+
+1. The model's `protected $readableDateFormat` property.
+2. The `readable_datetime_format` value from the config.
+3. The built-in default, `F j, Y g:i A`.
+
+```php
+// Per model:
+class Order extends Model
+{
+    use HasReadableDates;
+
+    protected $readableDateFormat = 'd/m/Y H:i';
+}
+```
+
+```php
+// Globally, in config/laravel-time-craft.php:
+'readable_datetime_format' => 'd M Y, g:i A',
+```
 
 ## Helper Functions
 

@@ -34,10 +34,20 @@ class TestCase extends Orchestra
 
     protected function setUpDatabase(): void
     {
-        $this->app['db']->connection()->getSchemaBuilder()->create('orders', function (Blueprint $table) {
+        $schema = $this->app['db']->connection()->getSchemaBuilder();
+
+        $schema->create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->timestamp('shipped_at')->nullable();
+            $table->timestamps();
+        });
+
+        $schema->create('soft_orders', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }
