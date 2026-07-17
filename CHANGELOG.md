@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Unreleased
 
+- Added the `HasReadableDates` trait: non-destructive `readable_created_at` / `readable_updated_at` / `readable_deleted_at` accessors and a generic `readableDate($field)` method, with a configurable format (`readable_datetime_format` config, or per-model `$readableDateFormat`). Verified against Laravel 12.
 - Added a PHPUnit/Testbench test suite covering all scopes and helper functions.
 - Fixed `formatDateTime()` and `getHumanDateTime()` to use the 12-hour format (`h`) so the `AM/PM` marker is correct (e.g. `10:38:12 PM` instead of `22:38:12 PM`).
 - Migrated `phpunit.xml` to the PHPUnit 10 schema and added a `.gitignore`.
